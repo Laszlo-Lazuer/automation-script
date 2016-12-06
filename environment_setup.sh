@@ -47,6 +47,16 @@ function create_workspace_dir {
   return
 }
 
+function help {
+  #!/bin/bash
+    printf "What do you need help with?: "
+    read -r answer
+  url="https://lmgtfy.com/?q="
+
+  open -a safari $url"$answer"
+  return
+}
+
 # User input section
 
 # Infinite while loop, keeps menu alive until exit condition met
@@ -57,6 +67,10 @@ do
 
   if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
     create_workspace_dir #Call the create_workspace_dir function
+
+  elif [ "$answer" == "help" ]; then
+    help
+    continue
 
   elif [ "$answer" == "q" ] || [ "$answer" == "exit" ]; then
     clear
