@@ -9,11 +9,21 @@
 #bash_version    :3.2.57(1)
 #===============================================================================
 
-printf "Hello, what's your name?: "
-read test
+while true
+do
 
-if [ "$test" == "name" ]; then
-  echo "Yay $test"
-else
- echo "No match."
-fi
+  printf "Hello, what's your name?: "
+  read test
+
+  if [ "$test" == "name" ]; then
+    echo "Yay $test"
+    exit
+  elif [ "$test" == "me" ]; then
+    echo "Yay $test"
+  elif [ "$test" == "q" ] || [ "$test" == "exit" ]; then
+    echo "Exitting ..."
+    exit
+  else
+   echo "No match."
+  fi
+done
