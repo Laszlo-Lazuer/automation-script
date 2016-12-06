@@ -21,6 +21,33 @@ echo "
 \___/_/\__/ /_/  /_/  \___/_/ /\__/\__/\__/  \___/_/\___/_//_/\__/
                          |___/
 "
+
+#Function declarations
+function quit {
+  exit
+}
+######################################################################
+#create_workspace_dir:                                                   #
+# The funciton will check to see if the ~/workspace directory exists #
+# if it does not it will create the directory and return.            #
+######################################################################
+function create_workspace_dir {
+  echo "Checking to see if workspace directory exists..."
+  cd ~/ || echo "Invalid Path" exit
+  if [ -d "workspace" ]; then
+    # Control will enter here if $DIRECTORY exists.
+    echo "workspace directory already exists, continuing"
+    exit #temporary exit
+  elif [ ! -d  "workspace" ]; then
+    # Control will enter here if $DIRECTORY exists.
+    echo "Creating workspace directory..."
+    mkdir ~/workspace
+    echo "workspace directory created"
+  fi
+  return
+}
+
+
 #Infinite while loop, keeps menu alive until exit condition met
 while true
 do
@@ -28,21 +55,7 @@ do
   read -r answer
 
   if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
-    echo "Checking to see if workspace directory exists..."
-
-    #Check if workspace directory exists
-    cd ~/ || echo "Invalid Path" exit
-    if [ -d "workspace" ]; then
-      # Control will enter here if $DIRECTORY exists.
-      echo "workspace directory already exists, continuing"
-      exit #temporary exit
-    elif [ ! -d  "workspace" ]; then
-      # Control will enter here if $DIRECTORY exists.
-      echo "Creating workspace directory..."
-      mkdir ~/workspace
-      echo "workspace directory created"
-    exit #temporary exit
-    fi
+    create_workspace_dir #Call the create_workspace_dir function
 
   elif [ "$answer" == "me" ]; then
     echo "Yay $answer"
