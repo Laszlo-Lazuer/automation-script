@@ -13,7 +13,6 @@
 clear
 
 #ASCII text banner definition
-
 echo "
   ______ __    ___             _         __    _______
  / ___(_) /_  / _ \_______    (_)__ ____/ /_  / ___/ /__  ___  ___
@@ -23,23 +22,24 @@ echo "
 "
 
 #Function declarations
-function quit {
-  exit
-}
+
 ######################################################################
-#create_workspace_dir:                                                   #
+# create_workspace_dir:                                              #
 # The funciton will check to see if the ~/workspace directory exists #
 # if it does not it will create the directory and return.            #
 ######################################################################
+
 function create_workspace_dir {
   echo "Checking to see if workspace directory exists..."
   cd ~/ || echo "Invalid Path" exit
+
+  #If workspace directory exists
   if [ -d "workspace" ]; then
-    # Control will enter here if $DIRECTORY exists.
     echo "workspace directory already exists, continuing"
-    exit #temporary exit
+    continue
+
+  #If workspace directory does not exist
   elif [ ! -d  "workspace" ]; then
-    # Control will enter here if $DIRECTORY exists.
     echo "Creating workspace directory..."
     mkdir ~/workspace
     echo "workspace directory created"
@@ -47,8 +47,9 @@ function create_workspace_dir {
   return
 }
 
+# User input section
 
-#Infinite while loop, keeps menu alive until exit condition met
+# Infinite while loop, keeps menu alive until exit condition met
 while true
 do
   printf "Would you like to setup your workspace?: "
@@ -57,12 +58,12 @@ do
   if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
     create_workspace_dir #Call the create_workspace_dir function
 
-  elif [ "$answer" == "me" ]; then
-    echo "Yay $answer"
   elif [ "$answer" == "q" ] || [ "$answer" == "exit" ]; then
-    echo "Exitting ..."
+    clear
+    echo "Exitting environment setup..."
     exit
+
   else
-   echo "No match."
+   printf "Input not recognized\nPlease try:\n\tA\n\tB\n\tC\n\n"
   fi
 done
