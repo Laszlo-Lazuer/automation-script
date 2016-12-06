@@ -14,5 +14,9 @@
                 quit
                 echo foo
 
-#Example 2
-###etc....
+#Example 2 - Let me google that for you
+# printf "topic?: "
+# read -r answer
+# url="https://lmgtfy.com/?q="
+#
+# open -a safari $url"$answer"
