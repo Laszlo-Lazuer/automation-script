@@ -12,6 +12,8 @@
 #Terminal Cleanup
 clear
 
+#ASCII text banner definition
+
 echo "
   ______ __    ___             _         __    _______
  / ___(_) /_  / _ \_______    (_)__ ____/ /_  / ___/ /__  ___  ___
@@ -19,9 +21,9 @@ echo "
 \___/_/\__/ /_/  /_/  \___/_/ /\__/\__/\__/  \___/_/\___/_//_/\__/
                          |___/
 "
+#Infinite while loop, keeps menu alive until exit condition met
 while true
 do
-
   printf "Would you like to setup your workspace?: "
   read -r answer
 
@@ -29,7 +31,7 @@ do
     echo "Checking to see if workspace directory exists..."
 
     #Check if workspace directory exists
-    cd ~/
+    cd ~/ || echo "Invalid Path" exit
     if [ -d "workspace" ]; then
       # Control will enter here if $DIRECTORY exists.
       echo "workspace directory already exists, continuing"
