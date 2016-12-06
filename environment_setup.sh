@@ -1,4 +1,4 @@
-#!/bin/bash       
+#!/bin/bash
 #title           :environment_setup.sh
 #description     :This script will clone a git project, based on user selection.
 #author		 :A. Laszlo Lazuer
@@ -9,4 +9,11 @@
 #bash_version    :3.2.57(1)
 #===============================================================================
 
-Echo "Menu here"
+printf "Hello, what's your name?: "
+read test
+
+if [ "$test" == "name" ]; then
+  echo "Yay $test"
+else
+ echo "No match."
+fi
