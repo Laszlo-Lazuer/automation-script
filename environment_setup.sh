@@ -13,7 +13,7 @@ while true
 do
 
   printf "Hello, what's your name?: "
-  read test
+  read -r test
 
   if [ "$test" == "name" ]; then
     echo "Yay $test"
